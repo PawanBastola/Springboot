@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sales home page</title>
+<!-- CSS only -->
+
+</head>
+<body>
+	<div class="container">
+		<div th:replace="Fragments/header :: css"></div>
+		<nav th:replace="Fragments/header :: header"></nav>
+
+		<h1>this is the Sales home Page</h1>
+
+		<div th:replace="Fragments/header :: footer"></div>
+
+		<div th:replace="Fragments/header :: javascript"></div>
+	</div>
+</body>
+</html>
