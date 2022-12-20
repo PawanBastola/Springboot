@@ -38,4 +38,10 @@ public class CustomerController {
 		return "redirect:/Customer/home";
 		
 	}
+	
+	//update code
+	@PostMapping("update")
+	public String updateCustomer() {
+		return "/Customer/update";
+	}
 }
