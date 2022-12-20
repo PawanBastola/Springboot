@@ -44,4 +44,7 @@ public class CustomerController {
 	public String updateCustomer() {
 		return "/Customer/update";
 	}
+	
+	//delete code
+	
 }
