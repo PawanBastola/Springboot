@@ -11,11 +11,142 @@
 		<div th:replace="Fragments/header :: css"></div>
 		<nav th:replace="Fragments/header :: header"></nav>
 
-		<h1>this is the Sales home Page</h1>
+		<!-- <select class="form-control" th:field="${operator.opeId}"
+			id="dropOperator">
+			<option value="0">select operator</option>
+			<option th:each="operator : ${operators}" th:value="${operator.id}"
+				th:text="${operator.operatorName}"></option>
+		</select> -->
 
-		<div th:replace="Fragments/header :: footer"></div>
 
-		<div th:replace="Fragments/header :: javascript"></div>
+
+
+		<br />
+		<div class="row">
+			<div class="row d-flex col-md-5 h-100">
+				<div class="col-lg-12 col-xl-11">
+					<div class="card text-black">
+						<div class="card-body ">
+							<div class="row justify-content-center">
+								<div class="">
+									<p class=" h3 text-center fw-bold mb-4">Sales</p>
+
+									<form th:action="@{/Sales/insert}" th:object="${salesDto}"
+										method="POST" class="mx-1 ">
+										<input type="text" hidden th:field="*{id}">
+										<input type="text" hidden th:field="*{date_of_sale}"  />
+										
+										<div class="d-flex flex-row align-items-center">
+
+											<div class="form-outline flex-fill ">
+												<select th:field="*{customer_id}"
+													class="form-control">
+													<option th:value="0">select Customer</option>
+													<option 
+														th:each="c : ${customerDtoList}" th:value="${c.id}"
+														th:text="${c.full_name}"></option>
+												</select> <label class="form-label" for="form3Example1c">Customer
+													Name</label>
+											</div>
+										</div>
+
+										<div class="d-flex flex-row align-items-center">
+
+											<div class="form-outline flex-fill ">
+												 <select th:field="*{product_id}"
+													class="form-control">
+													<option th:value="0">select Product</option>
+													<option 
+														th:each="p : ${productDtoList}" th:value="${p.id}"
+														th:text="${p.product_name}"></option>
+												</select> <label class="form-label" for="form3Example1c">Product
+													Name</label>
+											</div>
+										</div>
+
+
+
+										<div class="d-flex flex-row align-items-center ">
+
+											<div class="form-outline flex-fill mb-0">
+												<input type="number" th:field="*{quantity}"
+													class="form-control" /> <label class="form-label"
+													for="form3Example4c">Quantity</label>
+											</div>
+										</div>
+
+										<div class="d-flex flex-row align-items-center ">
+
+											<div class="form-outline flex-fill mb-0">
+												<input type="number" th:field="*{price}"
+													class="form-control" /> <label class="form-label"
+													for="form3Example4cd">price</label>
+											</div>
+										</div>
+										
+
+										<div class="d-flex justify-content-center ">
+											<button type="submit"
+												class="btn btn-primary btn-lg col-md-12">Register</button>
+										</div>
+
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-7 justify-content-center">
+				<div class="card text-black text-center">
+					<h1>Sales List</h1>
+
+					<table class="table">
+						<thead>
+							<tr>
+								
+								<th scope="col">Customer Name</th>
+								<th scope="col">Product</th>
+								<th scope="col">quantity</th>
+								<th scope="col">price</th>
+								<th scope="col">date</th>
+								<th scope="col">Action</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="s: ${salesDtoList}">
+								
+								<td th:text="${s.customer_id}"></td>
+								<td th:text="${s.product_id}"></td>
+								<td th:text="${s.quantity}"></td>
+								<td th:text="${s.price}"></td>
+								<td th:text="${s.date_of_sale}"></td>
+								<td><a class="btn btn-primary" role="button"
+									th:href="@{/Sales/edit/}+${s.id}">Edit</a> <a
+									class="btn btn-danger" role="button"
+									th:href="@{/Sales/delete/}+${s.id}">Delete</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+
+ 				</div>
+			</div>
+		</div>
+
 	</div>
+
+
+	<div th:replace="Fragments/header :: footer"></div>
+	<div th:replace="Fragments/header :: javascript"></div>
+
+
+
+
+
 </body>
 </html>
